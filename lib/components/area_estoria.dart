@@ -1,4 +1,5 @@
 import 'package:facebook_interface/components/cartao_estoria.dart';
+import 'package:facebook_interface/data/data.dart';
 import 'package:facebook_interface/models/models.dart';
 import 'package:flutter/material.dart';
 
@@ -22,9 +23,23 @@ class AreaEstoria extends StatelessWidget {
           horizontal: 8,
           vertical: 10,
         ),
-        itemCount: estorias.length,
+        itemCount: 1 + estorias.length,
         itemBuilder: (context, index) {
-          Estoria estoria = estorias[index];
+          if (index == 0) {
+            Estoria estoriaUsuario = Estoria(
+              usuario: usuarioAtual,
+              urlImagem: usuarioAtual.urlImagem,
+            );
+            return Padding(
+              padding: EdgeInsets.symmetric(horizontal: 4),
+              child: CartaoEstoria(
+                estoria: estoriaUsuario,
+                adicionarEstoria: true,
+              ),
+            );
+          }
+
+          Estoria estoria = estorias[index - 1];
 
           return Padding(
             padding: EdgeInsets.symmetric(horizontal: 4),
