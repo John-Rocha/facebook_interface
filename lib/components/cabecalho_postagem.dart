@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:facebook_interface/components/imagem_perfil.dart';
 import 'package:facebook_interface/models/models.dart';
 import 'package:flutter/material.dart';

@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:facebook_interface/components/cabecalho_postagem.dart';
+import 'package:facebook_interface/components/estatisticas_postagem.dart';
 import 'package:facebook_interface/models/models.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,9 @@ class CartaoPostagem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.white,
+      margin: EdgeInsets.symmetric(vertical: 8),
+      padding: EdgeInsets.symmetric(vertical: 8),
       child: Column(
         children: [
           // Cabeçalho
@@ -38,11 +42,12 @@ class CartaoPostagem extends StatelessWidget {
           ),
 
           // Area de estatística
-          Container(
-            color: Colors.red,
-            width: 100,
-            height: 100,
-          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8),
+            child: EstatisticasPostagem(
+              postagem: postagem,
+            ),
+          )
         ],
       ),
     );
