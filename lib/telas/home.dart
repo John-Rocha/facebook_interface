@@ -1,7 +1,9 @@
-import 'package:facebook_interface/components/AreaCriarPostagem.dart';
-import 'package:facebook_interface/components/BotaoCirculo.dart';
+import 'package:facebook_interface/components/area_criar_postagem.dart';
+import 'package:facebook_interface/components/botao_circulo.dart';
 import 'package:facebook_interface/components/area_estoria.dart';
+import 'package:facebook_interface/components/cartao_postagem.dart';
 import 'package:facebook_interface/data/data.dart';
+import 'package:facebook_interface/models/models.dart';
 import 'package:facebook_interface/utils/paletas_cores.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
@@ -60,10 +62,15 @@ class _HomeState extends State<Home> {
               ),
             ),
           ),
-          SliverToBoxAdapter(
-            child: Container(
-              color: Colors.grey[300],
-              height: 2000,
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                Postagem postagem = postagens[index];
+                return CartaoPostagem(
+                  postagem: postagem,
+                );
+              },
+              childCount: postagens.length,
             ),
           ),
         ],
